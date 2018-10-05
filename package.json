@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "prepublish": "rm -rf lib && (export NODE_ENV='production'; yarn build)",
     "build": "npx babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "npx prettier --write '{src,examples}/**/*.js'"
@@ -9,7 +10,7 @@
     "prop-types": "^15.6.2"
   },
   "name": "with-xstate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "keywords": [
     "react",
     "xstate",
