@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -12,13 +12,17 @@ const withXState = (mapActionsToXState) => (WrappedComponent) => {
     }
 
     componentDidMount() {
-      const { store: { dispatch } } = this.context;
+      let dispatch = (fn) => { fn() };
+
+      if ('store' in this.context && typeof this.context.store !== 'undefined') {
+        dispatch = this.context.store.dispatch;
+      }
 
       const machines = mapActionsToXState(dispatch);
 
       this._machines = Object.keys(machines).reduce((_machines, _machine) => {
         _machines[_machine] = {
-          value: this.props[_machine].value,
+          value: null,
           actions: machines[_machine]
         }
 
@@ -40,11 +44,15 @@ const withXState = (mapActionsToXState) => (WrappedComponent) => {
             this._machines[machine].value = currentMachine.value;
 
             for (let action of props[machine]['actions']) {
-              if (action.type in this._machines[machine]['actions']) {
-                let currentAction = this._machines[machine]['actions'][action.type].call();
+              let currentAction = null;
 
-                if (currentAction && 'then' in currentAction) await currentAction;
+              if (typeof action === 'string' && action in this._machines[machine]['actions']) {
+                currentAction = this._machines[machine]['actions'][action].call();
+              } else if ('type' in action && action.type in this._machines[machine]['actions']) {
+                currentAction = this._machines[machine]['actions'][action.type].call();
               }
+
+              if (currentAction && 'then' in currentAction) await currentAction;
             }
           }
         }
