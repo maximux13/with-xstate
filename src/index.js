@@ -1,3 +1,3 @@
-import withXState from "./withXState";
+import withXState from './withXState';
 
 export default withXState;

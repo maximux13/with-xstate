@@ -9,19 +9,19 @@ const lightMachine = Machine({
   states: {
     green: {
       on: {
-        TIMER: 'yellow',
+        TIMER: 'yellow'
       },
       onEntry: ['changeColor']
     },
     yellow: {
       on: {
-        TIMER: 'red',
+        TIMER: 'red'
       },
       onEntry: ['changeColor']
     },
     red: {
       on: {
-        TIMER: 'green',
+        TIMER: 'green'
       },
       onEntry: ['changeColor']
     }
@@ -31,13 +31,13 @@ const lightMachine = Machine({
 class App extends Component {
   state = {
     machine: lightMachine.initialState
-  }
+  };
 
   switchLight = () => {
     this.setState({
       machine: lightMachine.transition(this.state.machine, 'TIMER')
     });
-  }
+  };
 
   render() {
     return (
@@ -46,7 +46,7 @@ class App extends Component {
         <Light state={this.state.machine} />
         <button onClick={this.switchLight}>Change</button>
       </div>
-    )
+    );
   }
 }
 

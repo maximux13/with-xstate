@@ -1,16 +1,12 @@
 import React from 'react';
-import withXState from 'with-xstate';
+import withXState from '../../../lib';
 
-const Light = ({ state }) => (
-  <h1>
-    Current: {state.value}
-  </h1>
-)
+const Light = ({ state }) => <h1>Current: {state.value}</h1>;
 
-const mapActionsToXState = (dispatch) => ({
+const mapActionsToXState = (_, ownProps) => ({
   state: {
     changeColor: () => {
-      console.log('color changed!');
+      console.log('color changed!', ownProps.state.value);
     }
   }
 });

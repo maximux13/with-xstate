@@ -1,10 +1,10 @@
-import { compose, createStore } from "redux";
-import rootReducers from "./reducers";
+import { compose, createStore } from 'redux';
+import rootReducers from './reducers';
 
-const isDev = process.env.NODE_ENV !== "production";
+const isDev = process.env.NODE_ENV !== 'production';
 
 const reduxDevTools = () => {
-  if (isDev && typeof window === "object") {
+  if (isDev && typeof window === 'object') {
     if (window.__REDUX_DEVTOOLS_EXTENSION__) {
       return window.__REDUX_DEVTOOLS_EXTENSION__();
     }
