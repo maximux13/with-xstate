@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { bindActionCreators } from "redux";
-import { Provider, connect } from "react-redux";
+import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 
-import { changeLight } from "./store/actions";
-import Light from "./Light";
+import { changeLight } from './store/actions';
+import Light from './Light';
 
 class App extends Component {
   render() {

@@ -9,22 +9,22 @@ const lightMachine = Machine({
   states: {
     green: {
       on: {
-        [TIMER]: 'yellow',
+        [TIMER]: 'yellow'
       },
       onEntry: ['changeColor'],
       onExit: ['bye']
     },
     yellow: {
       on: {
-        [TIMER]: 'red',
+        [TIMER]: 'red'
       },
       onEntry: ['changeColor']
     },
     red: {
       on: {
-        [TIMER]: 'green',
+        [TIMER]: 'green'
       },
-      onEntry: ['changeColor'],
+      onEntry: ['changeColor']
     }
   }
 });
@@ -40,7 +40,7 @@ const machineReducer = (state = lightMachine.initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 const rootReducers = combineReducers({
   machine: machineReducer
