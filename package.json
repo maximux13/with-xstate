@@ -20,9 +20,23 @@
     "HOC"
   ],
   "description": "HOC to handle xState actions",
+  "files": [
+    "lib"
+  ],
   "main": "lib/index.js",
-  "author": "Andres Alarcon <maximux13@gmail.com>",
+  "author": {
+    "name": "Andres Alarcon",
+    "email": "maximux13@gmail.com"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maximux13/with-xstate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maximux13/with-xstate/issues"
+  },
+  "homepage": "https://github.com/maximux13/with-xstate#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
