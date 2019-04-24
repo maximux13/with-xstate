@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import isEqual from 'lodash.isequal';
 
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
@@ -56,7 +57,7 @@ const withXState = mapActionsToXState => WrappedComponent => {
           let currentMachine = props[machine];
           if (
             currentMachine.actions &&
-            currentMachine.value !== this._machines[machine]['value']
+            !isEqual(currentMachine.value, this._machines[machine]['value'])
           ) {
             this._machines[machine].value = currentMachine.value;
 
