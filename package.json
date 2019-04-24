@@ -12,7 +12,7 @@
     "prop-types": "^15.6.2"
   },
   "name": "with-xstate",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "keywords": [
     "react",
     "xstate",
